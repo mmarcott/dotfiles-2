@@ -1,4 +1,4 @@
-# dkeg 2013;i3 config file (v4) ## Rainbow Config
+# dkeg 2013;i3 config file (v4) - Rainbow Rebranded August-2015
 
 
 # Master key
@@ -68,21 +68,31 @@ bindsym $mod+u border none
 for_window [window_role="pop-up"] floating enable,move absolute center
 
 # ASSIGN WORKSPACE VARIABLES
-set $WS1 I
-set $WS2 II
-set $WS3 II
-set $WS4 IV
-set $WS5 V
-set $WS6 VI
-set $WS7 VII
+set $WS1 www
+set $WS2 media
+set $WS3 code
+set $WS4 misc
+set $WS5 ::
+set $WS6 :.
+set $WS7 .
 
 # WINDOW CONTROL 
 ## Float everything
 #for_window [class="[.]*"] floating enable 
-assign [class="mplayer2"] $WS6
 for_window [class="mplayer2"] floating enable
-## BROWSER ASSIGNMENT (Navigator=Iceape)
-assign [instance="dwb|Navigator|midori|Uzbl-tabbed"] $WS2
+
+
+## Window Assign
+
+assign [instance="Navigator"] $WS1
+assign [instance="urxvt"] $WS3
+assign [instance="atom"] $WS3
+assign [instance="thunar|caja|lxappearance|nitrogen"] $WS4
+assign[instance="mplayer|vlc|gnome-mplayer"] $WS2
+
+
+# Window Layout
+
 for_window [class="Midori"] floating enable
 for_window [title="Download"] floating enable
 for_window [title="Browser"] floating enable
@@ -91,13 +101,8 @@ for_window [class="Lxappearance"] floating enable
 for_window [title="Xfce-notifyd"] floating enable
 #for_window [class="URxvt"] floating enable 
 #for_window [class="URxvt"] border 1pixel
-assign [class="Thunar"] $WS7
 #for_window [class="Thunar"] floating enable 
 for_window [class="Leafpad"] floating enable 
-assign [instance="mousepad|leafpad"] $WS3
-#for_window [class="Mousepad"] floating enable 
-#assign [class="Turpial" ] $WS4
-#for_window [class="Turpial" ] floating enable
 
 bindsym $MOD+Tab focus right
 
@@ -106,9 +111,6 @@ bindsym $MOD+SHIFT+plus move scratchpad
 
 # SCRATCHPAD SHOW
 bindsym $MOD+plus scratchpad show
-
-# OPEN TERMINAL HERE (not working yet)
-#bindsym $MOD+n exec $HOME/bin/shell.sh
 
 # HANDLE POPUPS
 #popup_during_fullscreen smart
@@ -151,7 +153,8 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+d focus child
 
-# switch to workspace
+# Workspace switching
+
 bindsym $mod+1 workspace $WS1
 bindsym $mod+2 workspace $WS2
 bindsym $mod+3 workspace $WS3
@@ -159,11 +162,9 @@ bindsym $mod+4 workspace $WS4
 bindsym $mod+5 workspace $WS5
 bindsym $mod+6 workspace $WS6
 bindsym $mod+7 workspace $WS7
-#bindsym $mod+8 workspace 8
-#bindsym $mod+9 workspace 9
-#bindsym $mod+0 workspace 10:sample name
 
 # move focused container to workspace
+
 bindsym $mod+Shift+exclam move container to workspace $WS1
 bindsym $mod+Shift+at move container to workspace $WS2
 bindsym $mod+Shift+numbersign move container to workspace $WS3
@@ -175,11 +176,16 @@ bindsym $mod+Shift+asterisk move container to workspace 8
 bindsym $mod+Shift+parenleft move container to workspace 9
 bindsym $mod+Shift+parenright move container to workspace 10
 
-# reload the configuration file
+# Reload i3 config
+
 bindsym $mod+Shift+C reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+
 bindsym $mod+Shift+R restart
-# exit i3 (logs you out of your X session)
+
+# Exit i3
+
 bindsym $mod+Shift+E exit
 
 # resize window (you can also use the mouse for that)
@@ -239,12 +245,8 @@ client.urgent			#383a3b #383a3b  #ee0000
 
 ###  ADDED KEY BINDINGS  ###
 bindsym $MOD+SHIFT+f exec caja
-bindsym $MOD+Return exec --no-startup-id urxvtc -g 90x16+15+425
 bindsym $MOD+SHIFT+Return exec urxvt 
-#bindsym $MOD+SHIFT+x exec i3lock -c 424242 -n
-bindsym $MOD+SHIFT+x exec i3lock -d -i /home/dkeg/.i3/i3lock_back.png #-n
-#bindsym $MOD+SHIFT+m exec leafpad 
-bindsym $MOD+SHIFT+m exec --no-startup-id mousepad
+bindsym $MOD+SHIFT+x exec i3lock -d -i ~/Imágenes/mountain.png
 
 # VOLUME ADJUSTMENT
 bindsym $MOD+SHIFT+Up exec amixer set Master 5.0%+
@@ -252,29 +254,30 @@ bindsym $MOD+SHIFT+Down exec amixer set Master 5.0%-
 
 
 bar {
+
 	status_command i3blocks
 	tray_output none
 	position top
 	mode dock
-	font pango:Lemon 9px
+	font pango:lemon 9px
 	
 
-  colors {
+  	colors {
+		statusline	#999999
+		background	#29292929
+		# class                 border            backgrd 	text
+        	focused_workspace       #292929           #292929 	#cccccc
+       		active_workspace        #292929           #292929 	#696f89
+		inactive_workspace      #292929           #292929       #6b6b6b 
+        	urgent_workspace        #292929           #292929 	#c7a551
+   	}
 
-	statusline	#999999
-	background	#29292929
-				# class           border 	backgrd 	text
-        focused_workspace       #292929           #292929 	#cccccc
-        active_workspace        #292929           #292929 	#696f89
-        #inactive_workspace     #292929           #292929       #6b6b6b         #F7819F
-	inactive_workspace      #292929           #292929       #6b6b6b 
-        urgent_workspace        #292929           #292929 	#c7a551
-   }
  
 }
 
 
-# Autostart Apps.
+# Autostart
+
 exec nitrogen --restore
 exec setxkbmap es
 exec mpd
