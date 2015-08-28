@@ -16,8 +16,8 @@ set $mod MOD4
 
 # Gaps
 
-gaps inner 5
-gaps outer 2
+gaps inner 4
+gaps outer 4
 
 
 # Move between workspaces
@@ -72,9 +72,9 @@ set $WS1 www
 set $WS2 media
 set $WS3 code
 set $WS4 misc
-set $WS5 ::
-set $WS6 :.
-set $WS7 .
+set $WS5 torrent
+set $WS6 ::.
+set $WS7 :.
 
 # WINDOW CONTROL 
 ## Float everything
@@ -88,8 +88,9 @@ assign [instance="Navigator"] $WS1
 assign [instance="urxvt"] $WS3
 assign [instance="atom"] $WS3
 assign [instance="thunar|caja|lxappearance|nitrogen"] $WS4
-assign[instance="mplayer|vlc|gnome-mplayer"] $WS2
-
+assign [instance="mplayer|vlc|gnome-mplayer"] $WS2
+assign [instance="transmission-gtk"] $WS5
+assign [instance="virtualbox"] $WS4
 
 # Window Layout
 
@@ -98,19 +99,8 @@ for_window [title="Download"] floating enable
 for_window [title="Browser"] floating enable
 for_window [title="Preferences"] floating enable
 for_window [class="Lxappearance"] floating enable
-for_window [title="Xfce-notifyd"] floating enable
-#for_window [class="URxvt"] floating enable 
-#for_window [class="URxvt"] border 1pixel
-#for_window [class="Thunar"] floating enable 
-for_window [class="Leafpad"] floating enable 
 
 bindsym $MOD+Tab focus right
-
-# SCRATCHPAD CREATE
-bindsym $MOD+SHIFT+plus move scratchpad
-
-# SCRATCHPAD SHOW
-bindsym $MOD+plus scratchpad show
 
 # HANDLE POPUPS
 #popup_during_fullscreen smart
@@ -188,27 +178,6 @@ bindsym $mod+Shift+R restart
 
 bindsym $mod+Shift+E exit
 
-# resize window (you can also use the mouse for that)
-#mode "resize" {
-#        # These bindings trigger as soon as you enter the resize mode#
-#
-#        bindsym h resize shrink width 10 px or 10 ppt
-#        bindsym j resize grow height 10 px or 10 ppt
-#        bindsym k resize shrink height 10 px or 10 ppt
-#        bindsym l resize grow width 10 px or 10 ppt 
-	# arrow keys #        
-	# bindsym 113 right
-#        bindsym 116 up 
-#        bindsym 111 left 
-#        bindsym 114 down 
-#
-#        # back to normal: Enter or Escape
-#        bindsym Return mode "default"
-#        bindsym Escape mode "default"
-#}
-
-#bindsym $mod+r mode "resize"
-
 #EXAMPLE USING THE i3 bar
 # Create Log out, Reboot, Poweroff bindings
 #mode "Exit >> (L)ogout, (X)eboot, (P)oweroff  (C)Reload (R)Restart" {
@@ -225,6 +194,7 @@ bindsym $mod+Shift+E exit
 #bindsym Mod4+Control+q mode "Exit >> (L)ogout, (X)eboot, (P)oweroff  (C)Reload (R)Restart"
 
 # Screenshot
+
 bindsym Print exec scrot 'Screen-%Y-%m-%d--%_$wx$h_scrot.png' -e 'mv $f ~/Imágenes'
 
 # colors
@@ -247,6 +217,7 @@ client.urgent			#383a3b #383a3b  #ee0000
 bindsym $MOD+SHIFT+f exec caja
 bindsym $MOD+SHIFT+Return exec urxvt 
 bindsym $MOD+SHIFT+x exec i3lock -d -i ~/Imágenes/mountain.png
+
 
 # VOLUME ADJUSTMENT
 bindsym $MOD+SHIFT+Up exec amixer set Master 5.0%+
