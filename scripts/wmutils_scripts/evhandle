@@ -1,0 +1,30 @@
+#!/bin/sh
+#
+# evhandle - perform actions when window status changes
+# (c) ix 2016
+
+ROOT=~/scripts/wmutils
+FOCUS=$ROOT/focus
+CORNER=$ROOT/corner
+CURRENT="$(pfw)"
+
+while IFS=: read ev wid; do
+  case $ev in
+
+  	16) wattr o $wid ||  ($FOCUS $wid && $CORNER md $wid) ;;
+	7) wattr o $wid  || $FOCUS $wid ;;
+  	19) wattr o $wid || $FOCUS $wid ;;
+    4)
+        if ! wattr o $wid; then
+            if [ "$wid" != "$CURRENT" ] && wattr "$wid"; then
+                CURRENT="$wid"
+                $FOCUS $wid
+            fi
+        fi 
+        ;;
+
+    18) wattr o $wid || $FOCUS prev 2>/dev/null ;;
+
+  esac
+done
+
