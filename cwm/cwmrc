@@ -1,0 +1,46 @@
+# GENERAL
+
+borderwidth 0
+color activeborder "#0966D0"
+sticky yes
+
+autogroup 1 "firefox"
+autogroup 2 "termite"
+autogroup 3 "google-chrome-stable"
+gap 18 0 0 0
+
+# APPS
+
+bind 4-Return "termite"
+bind 4-b      "firefox"
+bind 4-f      "thunar"
+bind 4-n      "google-chrome-stable --app=https://netflix.com" # Netflix time!w
+bind M-F2 'dmenu_run -fn "lemon" -sf "white" -sb "black"'
+
+# BINDINGS 
+
+bind 4-x delete
+bind 4-r restart
+bind 4-t vtile
+bind 4-space maximize
+
+bind 4-1 grouponly1
+bind 4-2 grouponly2
+bind 4-3 grouponly3
+
+bind 4-Left  rcyclegroup
+bind 4-Right cyclegroup
+bind M-Tab   cyclegroup
+
+bind 4S-1 movetogroup1
+bind 4S-2 movetogroup2
+bind 4S-3 movetogroup3
+
+# MOUSE 
+
+mousebind "1" unmap
+mousebind "3" unmap
+
+mousebind 4-1 window_move
+mousebind 4-3 window_resize
+
