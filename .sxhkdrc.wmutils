@@ -19,14 +19,11 @@ mod4 + n
 alt + F2
  dmenu_run -fn "lemon" -sf "white" -sb "black"
 
-mod4 + t
- ~/scripts/wmutils/tile
-
 mod4 + x
  killwa $(pfw)
 
-mod4 + {t,v}
- ~/scripts/wmutils/tile {-h,-v}
+mod4 + t
+ ~/scripts/wmutils/tile
 
 # M O U S E
 # H A N D L I N G
