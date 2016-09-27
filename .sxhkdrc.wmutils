@@ -25,35 +25,6 @@ mod4 + t
 mod4 + x
  killwa $(pfw)
 
-# ╺┳╸╻ ╻╻┏━┓   ╻┏━┓   ╻ ╻┏━┓╻ ╻   ╻ ╻┏━┓╻ ╻   ╻ ╻┏┳┓
-#  ┃ ┣━┫┃┗━┓   ┃┗━┓   ┣━┫┃ ┃┃╻┃   ┗┳┛┃ ┃┃ ┃   ┃╻┃┃┃┃
-#  ╹ ╹ ╹╹┗━┛   ╹┗━┛   ╹ ╹┗━┛┗┻┛    ╹ ┗━┛┗━┛   ┗┻┛╹ ╹
-
-mod4 + {h,j,k,l}
- wmv {-10 0,0 +10, 0 -10, +10 0} $(pfw)
-
-mod4 + shift + {h,j,k,l}
- wmv {-40 0,0 +40, 0 -40, +40 0} $(pfw)
-
-mod4 + alt + {h,j,k,l}
- wrs {-10 0,0 +10, 0 -10, +10 0} $(pfw)
-
-mod4 + alt + shift + {h,j,k,l}
- wrs {-40 0,0 +40, 0 -40, +40 0} $(pfw)
-
-alt + {h,j,k,l}
- focus {h,j,k,l}
-
-mod4 + {F1,F2,F3,F4,F5}
- ~/bin/groaw -t {1,2,3,4,5}
-
-mod4 + alt + {F1,F2,F3,F4,F5}
- ~/bin/groaw -d all; \
- ~/bin/groaw -o {1,2,3,4,5}
-
-mod4 + shift + {F1,F2,F3,F4,F5}
- ~/bin/groaw -a {1,2,3,4,5}
-
 mod4 + {t,v}
  ~/scripts/wmutils/tile {-h,-v}
 
