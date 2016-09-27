@@ -1,0 +1,11 @@
+#!/bin/bash
+
+SCREEN_FILE="/home/rainbow/screenshots/$(date +%s)_screen.png"
+DELAY=3
+
+while getopts ":i:f" opt; do
+    case $opt in
+        i)  scrot -s $SCREEN_FILE ;;
+        f)  scrot -d $DELAY $SCREEN_FILE ;;
+    esac
+done
